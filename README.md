@@ -6,7 +6,9 @@ at Hunter College, Computer Science and the Graduate Center, Linguistics and Com
 of New York. It is written in Python 2.7.
 
 kghowitt@gmail.com
+
 zionsoumik@gmail.com
+
 sakas@hunter.cuny.edu
 
 The program implements a learner that weights parameters on a continuum from 0 to 1, using human-like language e-triggers grounded in Chomsky's principles and parameters framework. The learning model is one of first language acquisition, i.e., acquisition by a child of approximately 2 years of age.
@@ -24,6 +26,8 @@ http://www.colag.cs.hunter.cuny.edu/downloadables.html
 11/19/2019: The project is currently being maintained by Katherine Howitt & Soumik Dey
 
 kghowitt@gmail.com
+
+zionsoumik@gmail.com
 
 
 
