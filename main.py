@@ -212,7 +212,7 @@ if __name__ == '__main__':
         print(results)
     #runOneLanguage(numLearners, numberofsentences, language)
 
-    outputfile = 'simulation-outputfinal_opt7.csv'
+    outputfile = 'simulation-output.csv'
     with open(outputfile, "a+b") as outFile:
         outWriter = writer(outFile)
         pList = ["lang", "SP", "HIP", "HCP", "OPT", "NS", "NT", "WHM", "PI", "TM", "VtoI", "ItoC", "AH", "QInv"]
