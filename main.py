@@ -11,7 +11,7 @@ import multiprocessing
 from multiprocessing import Queue
 #GLOBALS
 
-rate = 0.08
+rate =0.08 
 conservativerate = 0.0005
 
 vtoirate=0.04
@@ -23,7 +23,6 @@ oprate=0.0001
 threshold = .001
 results=[]
 def pickASentence(languageDomain):
-    #print(len(languageDomain))
     return choice(languageDomain)
 
 def createLD(language):
@@ -47,7 +46,7 @@ def createLD(language):
             if grammStr == langNum:
                 #print([grammStr, inflStr, sentenceStr])
                 LD.append(s)
-    #print("len of ld",len(LD))
+
     return LD
 
 def childLearnsLanguage(ndr, languageDomain,language,numberofsentences):
@@ -81,7 +80,7 @@ def runOneLanguage(numLearners, numberofsentences, language,q):
         exit(2)
 
     LD = createLD(language)
-    print(len(LD))
+
     runSingleLearnerSimulation(LD, numLearners, numberofsentences, language,q)
 
 # Run random 100 language speed run
@@ -102,7 +101,7 @@ def runSpeedTest(numLearners, numberofsentences):
         for line in infoFile:
             [grammStr, inflStr, sentenceStr] = line.split("\t")
 
-            if grammStr in languageDict:
+            if grammStr in languageDict:     
                 sentenceStr = sentenceStr.rstrip()
                 # constructor creates sentenceList
                 s = Sentence([grammStr, inflStr, sentenceStr])
@@ -137,22 +136,22 @@ if __name__ == '__main__':
     q=Queue()
     # The argument keeps track of the mandatory arguments,
     # number of learners, max number of sentences, and target grammar
-   # parser = ArgumentParser(prog='Doing Away With Defaults', description='Set simulation parameters for learners')
-    #parser.add_argument('integers', metavar='int', type=int, nargs=2,
-                        #help='(1) The number of learners (2) The number of '
-                         #'sentences consumed')
+    parser = ArgumentParser(prog='Doing Away With Defaults', description='Set simulation parameters for learners')
+    parser.add_argument('integers', metavar='int', type=int, nargs=2,
+                        help='(1) The number of learners (2) The number of '
+                         'sentences consumed')
     #parser.add_argument('strings', metavar='str', type=str, nargs=1)
                         #help='The name of the language that will be used.'
                                 #'The current options are English=611, '
                                 #'German=2253, French=584, Japanese=3856')
 
-    #args = parser.parse_args()
-    #numLearners = 0
+    args = parser.parse_args()
+    numLearners = 0
 
     # Test whether certain command line arguments
     # can be converted to positive integers
-    numLearners = 1
-    numberofsentences = 500000
+    numLearners = args.integers[0]
+    numberofsentences = args.integers[1]
     #language = str(args.strings[0]).lower()
 
     # if language == "alllanguages":
@@ -182,12 +181,11 @@ if __name__ == '__main__':
 
 
 
-    with open('100.txt','rb') as tsvin:
+    with open('colag_list.tsv','rb') as tsvin:
         tsvin = csv.reader(tsvin,delimiter='\t')
         for row in tsvin:
             languages.append(row.pop(0))
-    print(languages)\
-
+    print(languages)
     print(numberofsentences)
     print(numLearners)
     jobs = []
@@ -196,7 +194,7 @@ if __name__ == '__main__':
         #q = Queue()
 
 
-        for i in range(0,1):
+        for i in range(0,47):
             if n>=len(languages):
                 break
             p = multiprocessing.Process(target=runOneLanguage, args=(numLearners, numberofsentences, languages[n],q,))
@@ -214,7 +212,7 @@ if __name__ == '__main__':
         print(results)
     #runOneLanguage(numLearners, numberofsentences, language)
 
-    outputfile = 'simulation-outputn.csv'
+    outputfile = 'simulation-outputfinal_opt7.csv'
     with open(outputfile, "a+b") as outFile:
         outWriter = writer(outFile)
         pList = ["lang", "SP", "HIP", "HCP", "OPT", "NS", "NT", "WHM", "PI", "TM", "VtoI", "ItoC", "AH", "QInv"]
