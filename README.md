@@ -16,7 +16,7 @@ sakas@hunter.cuny.edu
 The program implements a learner that conceptualizes parameter values on a continuum from 0 to 1. It makes use of human-like language e-triggers first proposed by Sakas & Fodor (2012) and significanlty expanded by Howitt, Dey and Sakas. The learner is grounded in Chomsky's principles and parameters framework. The learning model is one of first language acquisition, i.e., acquisition by a very young child.
 
 
-The Sakas & Fodor (2012), the CUNY CoLAG Domain in its entirety, a technical report describing the domain and other relevant information are downloadable here:
+Sakas & Fodor (2012), the CUNY CoLAG Domain in its entirety, a technical report describing the domain and other relevant information are downloadable here:
 
 http://www.colag.cs.hunter.cuny.edu/downloadables.html
 
